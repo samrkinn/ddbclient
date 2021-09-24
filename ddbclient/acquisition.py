@@ -15,7 +15,7 @@ class Acquisition:
 
     def insert_to_db(self):
         acquisition_url = os.path.join(self.base_url,
-            'new_acquisition')
+            'new_acquisition').replace('\\', '/')
         
         if self.data:
             r = requests.post(acquisition_url, json=self.data)
@@ -27,7 +27,7 @@ class Acquisition:
         acquisition_url = os.path.join(self.base_url,
             self.data['specimen_id'],
             'acquisition',
-            self.data['acquisition_id'])
+            self.data['acquisition_id']).replace('\\', '/')
         
         r = requests.put(acquisition_url, json=self.data)
         acquisition = r.json()
@@ -41,7 +41,7 @@ class Acquisition:
         acquisition_url = os.path.join(self.base_url,
             specimen_id,
             'acquisition',
-            acquisition_id)
+            acquisition_id).replace('\\', '/')
 
         r = requests.get(acquisition_url)
         acquisition = r.json()
@@ -53,7 +53,7 @@ class Acquisition:
         acquisition_url = os.path.join(self.base_url,
             self.data['specimen_id'],
             'acquisition',
-            self.data['acquisition_id'])
+            self.data['acquisition_id']).replace('\\', '/')
         
         r = requests.delete(acquisition_url, json=self.data)
         acquisition = r.json()
@@ -65,7 +65,7 @@ class Acquisition:
             self.data['specimen_id'],
             'acquisition',
             self.data['acquisition_id'],
-            'get_overview')
+            'get_overview').replace('\\', '/')
         
         r = requests.get(acquisition_url)
 
@@ -76,7 +76,7 @@ class Acquisition:
             self.data['specimen_id'],
             'acquisition',
             self.data['acquisition_id'],
-            'list_contents')
+            'list_contents').replace('\\', '/')
         
         r = requests.get(acquisition_url)
         contents = r.json()
@@ -87,16 +87,16 @@ class Acquisition:
         acquisition_url = os.path.join(self.base_url,
             self.data['specimen_id'],
             'acquisition',
-            self.data['acquisition_id'])
+            self.data['acquisition_id']).replace('\\', '/')
     
     def get_segment(self):
         acquisition_url = os.path.join(self.base_url,
             self.data['specimen_id'],
             'acquisition',
-            self.data['acquisition_id'])
+            self.data['acquisition_id']).replace('\\', '/')
     
     def get_strip(self):
         acquisition_url = os.path.join(self.base_url,
             self.data['specimen_id'],
             'acquisition',
-            self.data['acquisition_id'])
+            self.data['acquisition_id']).replace('\\', '/')

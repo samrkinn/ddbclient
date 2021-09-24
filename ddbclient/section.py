@@ -15,7 +15,7 @@ class Section:
 
     def insert_to_db(self):
         section_url = os.path.join(self.base_url,
-            'new_section')
+            'new_section').replace('\\', '/')
         
         if self.data:
             r = requests.post(section_url, json=self.data)
@@ -27,7 +27,7 @@ class Section:
         section_url = os.path.join(self.base_url,
             self.data['specimen_id'],
             'section',
-            self.data['section_num'])
+            self.data['section_num']).replace('\\', '/')
         
         r = requests.put(section_url, json=self.data)
         section = r.json()
@@ -41,7 +41,7 @@ class Section:
         section_url = os.path.join(self.base_url,
             specimen_id,
             'section',
-            section_num)
+            section_num).replace('\\', '/')
 
         r = requests.get(section_url)
         section = r.json()
@@ -53,7 +53,7 @@ class Section:
         section_url = os.path.join(self.base_url,
             self.data['specimen_id'],
             'section',
-            self.data['section_num'])
+            self.data['section_num']).replace('\\', '/')
         
         r = requests.delete(section_url, json=self.data)
         section = r.json()

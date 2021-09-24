@@ -22,7 +22,7 @@ class Specimen:
     
     def update_in_db(self):
         specimen_url = os.path.join(self.base_url,
-            self.data['specimen_id'])
+            self.data['specimen_id']).replace('\\', '/')
         
         r = requests.put(specimen_url, json=self.data)
         specimen = r.json()
@@ -34,7 +34,7 @@ class Specimen:
             specimen_id = str(specimen_id)
 
         specimen_url = os.path.join(self.base_url,
-            specimen_id)
+            specimen_id).replace('\\', '/')
 
         r = requests.get(specimen_url)
         specimen = r.json()
@@ -44,7 +44,7 @@ class Specimen:
     
     def delete_from_db(self):
         specimen_url = os.path.join(self.base_url,
-            self.data['specimen_id'])
+            self.data['specimen_id']).replace('\\', '/')
         
         r = requests.delete(specimen_url, json=self.data)
         specimen = r.json()
@@ -54,7 +54,7 @@ class Specimen:
     def get_sections(self):
         sections_url = os.path.join(self.base_url,
             self.data['specimen_id'],
-            'sections')
+            'sections').replace('\\', '/')
         
         r = requests.get(sections_url)
         sections = r.json()
@@ -64,7 +64,7 @@ class Specimen:
     def get_sessions(self):
         sessions_url = os.path.join(self.base_url,
             self.data['specimen_id'],
-            'sessions')
+            'sessions').replace('\\', '/')
         
         r = requests.get(sessions_url)
         sessions = r.json()
@@ -74,7 +74,7 @@ class Specimen:
     def get_acquisitions(self):
         acquisitions_url = os.path.join(self.base_url,
             self.data['specimen_id'],
-            'acquisitions')
+            'acquisitions').replace('\\', '/')
         
         r = requests.get(acquisitions_url)
         acquisitions = r.json()

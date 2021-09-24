@@ -15,7 +15,7 @@ class Session:
 
     def insert_to_db(self):
         session_url = os.path.join(self.base_url,
-            'new_session')
+            'new_session').replace('\\', '/')
         
         if self.data:
             r = requests.post(session_url, json=self.data)
@@ -27,7 +27,7 @@ class Session:
         session_url = os.path.join(self.base_url,
             self.data['specimen_id'],
             'session',
-            self.data['session_id'])
+            self.data['session_id']).replace('\\', '/')
         
         r = requests.put(session_url, json=self.data)
         session = r.json()
@@ -41,7 +41,7 @@ class Session:
         session_url = os.path.join(self.base_url,
             specimen_id,
             'session',
-            session_id)
+            session_id).replace('\\', '/')
 
         r = requests.get(session_url)
         session = r.json()
@@ -53,7 +53,7 @@ class Session:
         session_url = os.path.join(self.base_url,
             self.data['specimen_id'],
             'session',
-            self.data['session_id'])
+            self.data['session_id']).replace('\\', '/')
         
         r = requests.delete(session_url, json=self.data)
         session = r.json()
